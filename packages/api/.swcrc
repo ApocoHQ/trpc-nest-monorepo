@@ -1,0 +1,19 @@
+{
+    "sourceMaps": "inline",
+    "jsc": {
+      "parser": {
+        "syntax": "typescript",
+        "tsx": false,
+        "decorators": true,
+        "dynamicImport": true
+      },
+      "transform": {
+        "decoratorMetadata": true
+      },
+      "target": "es2020",
+      "paths": {}
+    },
+    "module": {
+      "type": "es6"
+    }
+  }

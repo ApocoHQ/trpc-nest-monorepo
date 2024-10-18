@@ -1,0 +1,16 @@
+{
+  "name": "trpc-monorepo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "turbo run dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@9.7.1",
+  "devDependencies": {
+    "turbo": "^2.0.11"
+  }
+}
