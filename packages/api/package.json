@@ -2,12 +2,15 @@
   "name": "@shared/api",
   "version": "0.0.0",
   "private": true,
-  "type": "module",
-  "main": "dist/esm/index.js",
+  "module": "dist/esm/src/index.js",
+  "main": "dist/cjs/src/index.js",
   "types": "src/index.ts",
   "scripts": {
-    "build": "swc src --config-file .swcrc --out-dir dist/esm",
-    "dev": "pnpm run build --watch"
+    "postinstall": "pnpm run build",
+    "build": "pnpm run build:cjs && pnpm run build:esm",
+    "build:cjs": "swc src --config-file cjs.swcrc --out-dir dist/cjs",
+    "build:esm": "swc src --config-file esm.swcrc --out-dir dist/esm",
+    "dev": "pnpm run build:cjs --watch & pnpm run build:esm --watch"
   },
   "devDependencies": {
     "@swc/cli": "0.4.1-nightly.20240914",
