@@ -16,8 +16,17 @@ export class TrpcService {
       '/trpc',
       trpcExpress.createExpressMiddleware({
         router,
-        createContext: () => {
+        createContext: ({ req }) => {
+          const getSession = () => {
+            if (req.headers.authorization === 'Bearer Foobar') {
+              return { userId: 'Testing User' };
+            } else {
+              return null;
+            }
+          };
+
           return {
+            session: getSession(),
             numberGenerator: this.numberGeneratorFeature,
           };
         },

@@ -13,6 +13,9 @@ function App() {
       links: [
         httpBatchLink({
           url: "/trpc",
+          headers: () => {
+            return { Authorization: "Bearer Foobar" };
+          },
         }),
       ],
     })

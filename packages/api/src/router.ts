@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { trpcInstance } from "./trpc.js";
+import { authenticatedTrpcProcedure, trpcInstance } from "./trpc.js";
 
 const randomNumberInputSchema = z.object({
   min: z.number().min(0),
@@ -7,11 +7,11 @@ const randomNumberInputSchema = z.object({
 });
 
 export const router = trpcInstance.router({
-  getRandomNumber: trpcInstance.procedure
+  getRandomNumber: authenticatedTrpcProcedure
     .input(randomNumberInputSchema)
     .output(z.number())
     .query(async ({ ctx, input }) => {
-      return ctx.numberGenerator.getRandomNumber(input);
+      return ctx.numberGenerator.getRandomNumber(ctx.session, input);
     }),
 });
 
