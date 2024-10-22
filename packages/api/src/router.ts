@@ -11,7 +11,7 @@ export const router = trpcInstance.router({
     .input(randomNumberInputSchema)
     .output(z.number())
     .query(async ({ ctx, input }) => {
-      return ctx.getRandomNumber(input);
+      return ctx.numberGenerator.getRandomNumber(input);
     }),
 });
 

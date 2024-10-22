@@ -3,9 +3,14 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 import { Injectable } from '@nestjs/common';
 
 import { router } from '@shared/api';
+import { NumberGeneratorFeature } from '../number-generator/number-generator-feature';
 
 @Injectable()
 export class TrpcService {
+  constructor(
+    private readonly numberGeneratorFeature: NumberGeneratorFeature,
+  ) {}
+
   applyMiddleware(app: NestExpressApplication) {
     app.use(
       '/trpc',
@@ -13,12 +18,7 @@ export class TrpcService {
         router,
         createContext: () => {
           return {
-            getRandomNumber: (props) => {
-              return (
-                Math.floor(Math.random() * (props.max - props.min + 1)) +
-                props.min
-              );
-            },
+            numberGenerator: this.numberGeneratorFeature,
           };
         },
       }),
