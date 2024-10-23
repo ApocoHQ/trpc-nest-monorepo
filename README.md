@@ -1,6 +1,6 @@
-# TRPC + Nest.js monorepo example
+# tRPC + NestJS monorepo example
 
-This repository serves as a complimentary code for the article explaining how to integrate tRPC with Nest.js with Authentication in monorepo.
+This repository serves as a complimentary code for the article explaining how to integrate tRPC with NestJS with Authentication in monorepo.
 
 ## Running the example
 
